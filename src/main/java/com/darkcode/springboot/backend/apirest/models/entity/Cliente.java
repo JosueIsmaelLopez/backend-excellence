@@ -1,6 +1,7 @@
 package com.darkcode.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,6 +32,9 @@ public class Cliente implements Serializable{
 	
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	private Persona persona;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Telefono> telefono;
 	
 	public Long getId() {
 		return id;
