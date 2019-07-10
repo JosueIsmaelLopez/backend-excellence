@@ -8,32 +8,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "asesor")
-public class Asesor implements Serializable {
-
+@Table(name = "usuario")
+public class Usuario implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
-
+	private long id;
+	
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	private Empleado empleado;
-
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	private Grupo grupo;
-
-	public Long getId() {
+	
+	@Column(name = "username", length = 50, insertable = true, updatable = false, nullable = false)
+	private String username;
+	
+	@Column(name = "password", length = 50, insertable = true, updatable = false, nullable = false)
+	private String password;
+	
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -45,22 +47,30 @@ public class Asesor implements Serializable {
 		this.empleado = empleado;
 	}
 
-	public Grupo getGrupo() {
-		return grupo;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public Asesor() {
+	public String getPassword() {
+		return password;
 	}
 
-	public Asesor(Long id, Empleado empleado, Grupo grupo) {
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Usuario() {}
+
+	public Usuario(long id, Empleado empleado, String username, String password) {
 		super();
 		this.id = id;
 		this.empleado = empleado;
-		this.grupo = grupo;
+		this.username = username;
+		this.password = password;
 	}
-
+	
 }

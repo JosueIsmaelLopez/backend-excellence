@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "empleados")
+@Table(name = "empleado")
 public class Empleado implements Serializable{
 
 	@Id
@@ -44,6 +44,15 @@ public class Empleado implements Serializable{
 
 	public void setSalario(float salario) {
 		this.salario = salario;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
 

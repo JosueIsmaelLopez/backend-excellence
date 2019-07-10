@@ -10,47 +10,42 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "organizacion")
-public class Organizacion implements Serializable{
+@Table(name = "tutoria")
+public class Tutoria implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
-	
-	@Column(name = "nombreOrganizacion", length = 50, insertable = true, updatable = true, nullable = false)
-	private String NombreOrganizacion;
-	
-	
+
+	@Column(name = "descripcion", length = 50, insertable = true, updatable = true, nullable = false)
+	private String descripcion;
+
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-	public String getNombreOrganizacion() {
-		return NombreOrganizacion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-
-	public void setNombreOrganizacion(String nombreOrganizacion) {
-		NombreOrganizacion = nombreOrganizacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-
-	public Organizacion() {}
-
-
-	public Organizacion(Long id, String nombreOrganizacion) {
+	public Tutoria(Long id, String descripcion) {
 		super();
 		this.id = id;
-		NombreOrganizacion = nombreOrganizacion;
+		this.descripcion = descripcion;
 	}
+	
+	public Tutoria() {}
 	
 	
 }

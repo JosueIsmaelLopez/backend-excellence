@@ -8,53 +8,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "grupo")
-public class Grupo implements Serializable{
+@Table(name = "cobrador")
+public class Cobrador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
-	
-	@Column(name = "nombreGrupo", length = 50, insertable = true, updatable = true, nullable = false)
-	private String NombreGrupo;
-	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	private Organizacion organizacion;
-	
+
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
+	private Empleado empleado;
+
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-	public String getNombreGrupo() {
-		return NombreGrupo;
+	public Empleado getEmpleado() {
+		return empleado;
 	}
 
-
-	public void setNombreGrupo(String nombreGrupo) {
-		NombreGrupo = nombreGrupo;
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
+	public Cobrador() {
+	}
 
-	public Grupo() {}
-
-
-	public Grupo(Long id, String nombreGrupo) {
+	public Cobrador(Long id, Empleado empleado) {
 		super();
 		this.id = id;
-		NombreGrupo = nombreGrupo;
+		this.empleado = empleado;
 	}
-	
-	
+
 }

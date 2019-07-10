@@ -13,8 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "asesor")
-public class Asesor implements Serializable {
+@Table(name = "referencia")
+public class Referencia implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,10 +24,13 @@ public class Asesor implements Serializable {
 	private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
-	private Empleado empleado;
+	private Persona persona;
 
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	private Grupo grupo;
+	private Titular titular;
+
+	@Column(name = "telefono", length = 20, insertable = true, updatable = true)
+	private String Telefono;
 
 	public Long getId() {
 		return id;
@@ -37,30 +40,39 @@ public class Asesor implements Serializable {
 		this.id = id;
 	}
 
-	public Empleado getEmpleado() {
-		return empleado;
+	public Persona getPersona() {
+		return persona;
 	}
 
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
-	public Grupo getGrupo() {
-		return grupo;
+	public Titular getTitular() {
+		return titular;
 	}
 
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
+	public void setTitular(Titular titular) {
+		this.titular = titular;
 	}
 
-	public Asesor() {
+	public String getTelefono() {
+		return Telefono;
 	}
 
-	public Asesor(Long id, Empleado empleado, Grupo grupo) {
+	public void setTelefono(String telefono) {
+		Telefono = telefono;
+	}
+
+	public Referencia() {
+	}
+
+	public Referencia(Long id, Persona persona, Titular titular, String telefono) {
 		super();
 		this.id = id;
-		this.empleado = empleado;
-		this.grupo = grupo;
+		this.persona = persona;
+		this.titular = titular;
+		Telefono = telefono;
 	}
 
 }

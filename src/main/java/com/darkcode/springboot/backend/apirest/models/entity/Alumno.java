@@ -12,9 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "titular")
-public class Titular implements Serializable{
-	
+@Table(name = "alumno")
+public class Alumno implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -22,23 +22,15 @@ public class Titular implements Serializable{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "salario", insertable = true, updatable = true, nullable = false)
-	private float Salario;
-	
-	@Column(name = "nombreTrabajo", length = 30, insertable = true, updatable = true, nullable = true)
-	private String NombreTrabajo;
-	
-	@Column(name = "direccionTrabajo", length = 200, insertable = true, updatable = true, nullable = true)
-	private String DireccionTrabajo;
-	
-	@Column(name = "telefonoTrabajo", length = 30, insertable = true, updatable = true, nullable = true)
-	private String TelefonoTrabajo;
-	
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	private Cliente cliente;
-
 	
-	public Titular() {}
+	@Column(name ="nivel", insertable = true, updatable = true, nullable = false)
+	private short Nivel;
 	
+	@Column(name ="activo", insertable = true, updatable = true, nullable = false)
+	private boolean activo;
+	
+	public Alumno() {}
 
 }
